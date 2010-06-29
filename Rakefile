@@ -17,8 +17,6 @@ begin
     gemspec.add_dependency "dm-migrations"
     gemspec.add_dependency "dm-validations"
     gemspec.add_dependency "dm-timestamps"
-    gemspec.add_dependency "rufus-tokyo"
-    gemspec.add_dependency "sinbook"
     gemspec.add_dependency "rack-flash"
   end
   Jeweler::GemcutterTasks.new

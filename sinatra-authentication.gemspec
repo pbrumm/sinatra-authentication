@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Max Justus Spransy"]
-  s.date = %q{2010-06-14}
+  s.date = %q{2010-06-29}
   s.description = %q{Simple authentication plugin for sinatra.}
   s.email = %q{maxjustus@gmail.com}
   s.extra_rdoc_files = [
@@ -34,10 +34,6 @@ Gem::Specification.new do |s|
      "lib/models/abstract_user.rb",
      "lib/models/datamapper_user.rb",
      "lib/models/dm_adapter.rb",
-     "lib/models/mm_adapter.rb",
-     "lib/models/mongomapper_user.rb",
-     "lib/models/rufus_tokyo_user.rb",
-     "lib/models/tc_adapter.rb",
      "lib/sinatra-authentication.rb",
      "lib/views/edit.haml",
      "lib/views/index.haml",
@@ -66,34 +62,32 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/maxjustus/sinatra-authentication}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Simple authentication plugin for sinatra.}
   s.test_files = [
-    "test/lib/dm_sinbook.rb",
+    "test/route_tests.rb",
+     "test/datamapper_test.rb",
+     "test/rufus_tokyo_test.rb",
+     "test/mongomapper_test.rb",
      "test/lib/tc_app.rb",
+     "test/lib/dm_app.rb",
      "test/lib/mm_app.rb",
      "test/lib/tc_sinbook.rb",
+     "test/lib/dm_sinbook.rb",
      "test/lib/helper.rb",
-     "test/lib/dm_extend_app.rb",
-     "test/lib/dm_app.rb",
-     "test/datamapper_test.rb",
-     "test/mongomapper_test.rb",
-     "test/rufus_tokyo_test.rb",
-     "test/route_tests.rb"
+     "test/lib/dm_extend_app.rb"
   ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<sinatra>, [">= 0"])
       s.add_runtime_dependency(%q<dm-core>, [">= 0"])
       s.add_runtime_dependency(%q<dm-migrations>, [">= 0"])
       s.add_runtime_dependency(%q<dm-validations>, [">= 0"])
       s.add_runtime_dependency(%q<dm-timestamps>, [">= 0"])
-      s.add_runtime_dependency(%q<rufus-tokyo>, [">= 0"])
-      s.add_runtime_dependency(%q<sinbook>, [">= 0"])
       s.add_runtime_dependency(%q<rack-flash>, [">= 0"])
     else
       s.add_dependency(%q<sinatra>, [">= 0"])
@@ -101,8 +95,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<dm-migrations>, [">= 0"])
       s.add_dependency(%q<dm-validations>, [">= 0"])
       s.add_dependency(%q<dm-timestamps>, [">= 0"])
-      s.add_dependency(%q<rufus-tokyo>, [">= 0"])
-      s.add_dependency(%q<sinbook>, [">= 0"])
       s.add_dependency(%q<rack-flash>, [">= 0"])
     end
   else
@@ -111,8 +103,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<dm-migrations>, [">= 0"])
     s.add_dependency(%q<dm-validations>, [">= 0"])
     s.add_dependency(%q<dm-timestamps>, [">= 0"])
-    s.add_dependency(%q<rufus-tokyo>, [">= 0"])
-    s.add_dependency(%q<sinbook>, [">= 0"])
     s.add_dependency(%q<rack-flash>, [">= 0"])
   end
 end
