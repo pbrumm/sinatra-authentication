@@ -29,11 +29,6 @@ In your sinatra app simply require "dm-core", "digest/sha1", 'rack-flash' (if yo
 
 If you fetch any of the user pages using ajax, they will automatically render without a layout
 
-## ADDITIONAL ROUTES WHEN USING SINBOOK FOR FACEBOOK INTEGRATION:
-
-* get      '/reciever'
-* get      '/connect'
-
 ## FLASH MESSAGES
 
 Flash messages are implemented using rack-flash. To set them up add this to your code:
@@ -160,8 +155,7 @@ And then to access/update your newly defined attributes you use the User class:
 
 the User class passes additional method calls along to the interfacing database class, so calls to Datamapper functions should work as expected.
 
-The database user class is named :
+The database user class is named
 
-* for Datamapper:
-  > DmUser
+    DmUser
 
