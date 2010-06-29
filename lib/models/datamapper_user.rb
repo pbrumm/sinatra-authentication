@@ -7,9 +7,6 @@ class DmUser
   property :salt, String
   property :created_at, DateTime
   property :permission_level, Integer, :default => 1
-  if Sinatra.const_defined?('FacebookObject')
-    property :fb_uid, String
-  end
 
   attr_accessor :password, :password_confirmation
   #protected equievelant? :protected => true doesn't exist in dm 0.10.0

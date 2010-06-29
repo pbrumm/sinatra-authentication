@@ -5,13 +5,13 @@ begin
   require 'jeweler'
   
   Jeweler::Tasks.new do |gemspec|
-    gemspec.name           = 'sinatra-authentication'
-    gemspec.version        = '0.3.2'
+    gemspec.name           = 'sinatra-authentication-nedludd'
+    gemspec.version        = '0.0.1'
     gemspec.description    = "Simple authentication plugin for sinatra."
     gemspec.summary        = "Simple authentication plugin for sinatra."
-    gemspec.homepage       = "http://github.com/maxjustus/sinatra-authentication"
-    gemspec.author         = "Max Justus Spransy"
-    gemspec.email          = "maxjustus@gmail.com"
+    gemspec.homepage       = "http://github.com/nedludd/sinatra-authentication"
+    gemspec.author         = ["Max Justus Spransy" "Tim Hermans"] 
+    gemspec.email          = ["maxjustus@gmail.com" "thermans@gmail.com"]
     gemspec.add_dependency "sinatra"
     gemspec.add_dependency "dm-core"
     gemspec.add_dependency "dm-migrations"

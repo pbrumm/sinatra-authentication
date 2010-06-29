@@ -10,8 +10,6 @@
         %td
           - if user.email
             = user.email
-          - elsif user.fb_uid
-            <fb:name uid=#{user.fb_uid} />
           - else
             "user #{user.id}"
         - if current_user.admin?
