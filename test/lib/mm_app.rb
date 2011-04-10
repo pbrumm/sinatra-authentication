@@ -1,13 +1,17 @@
 require 'rubygems'
 require 'sinatra'
 require 'haml'
-require 'dm-core'
-require 'dm-migrations'
 require 'rack-flash'
+require 'mongo_mapper'
+
+#logger = Logger.new($stdout)
+#MongoMapper.connection = Mongo::Connection.new('db.mongohq.com', 27017, :logger => logger)
+#MongoMapper.database = "fdbk"
+#MongoMapper.database.authenticate(ENV['mongohq_user'], ENV['mongohq_pass'])
+
 require File.join(File.dirname(__FILE__), '../../lib/sinatra-authentication')
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/test.db")
-DataMapper.auto_migrate!
+MongoMapper.database = "sinatraauthtest"
 
 use Rack::Session::Cookie, :secret => "heyhihello"
 use Rack::Flash
