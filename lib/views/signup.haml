@@ -6,7 +6,7 @@
     .field
       .label
         %label{:for => "user_email"} Email
-      %input{ :id => "user_email", :name => "user[email]", :size => 30, :type => "text" }
+      %input{ :id => "user_email", :name => "user[email]", :size => 30, :type => "text" , :value => params[:email]}
     .field
       .label
         %label{:for => "user_password"} Password
@@ -19,3 +19,8 @@
       %input{ :value => "Create account", :type => "submit" }
       %a{:href => "/login", :class => 'sinatra_authentication_link'}
         Login
+    - if Sinatra.const_defined?('FacebookObject')
+      .third_party_signup
+        %h3.section_title One click signup:
+        .login_link.facebook_login
+          = render_facebook_connect_link('Signup using facebook', :size => 'large')

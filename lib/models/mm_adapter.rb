@@ -1,18 +1,17 @@
-module DmAdapter
+module MmAdapter 
   def self.included(base)
     base.extend ClassMethods
-    base.class_eval { include DmAdapter::InstanceMethods }
+    base.class_eval { include MmAdapter::InstanceMethods }
   end
 
   module ClassMethods
-    #pass all args to this
-    def all(*args)
-      result = DmUser.all(*args)
+    def all
+      result = MmUser.all
       result.collect {|instance| self.new instance}
     end
 
     def get(hash)
-      if user = DmUser.first(hash)
+      if user = MmUser.first(hash)
         self.new user
       else
         nil
@@ -20,20 +19,25 @@ module DmAdapter
     end
 
     def set(attributes)
-      user = DmUser.new attributes
+      #puts attributes.inspect
+      user = MmUser.new attributes
+      #puts user.inspect
+      #puts user.to_json
       user.save
       self.new user
     end
 
     def set!(attributes)
-      user = DmUser.new attributes
-      user.save!
+      user = MmUser.new attributes
+      user.save(:validate => false)
       self.new user
     end
 
     def delete(pk)
-      user = DmUser.first(:id => pk)
+      user = MmUser.first(:id => pk)
+      #returns nil on success. Is this correct? Will it return something else on failure?
       user.destroy
+      user.destroyed?
     end
   end
 
@@ -42,15 +46,17 @@ module DmAdapter
       @instance.valid?
     end
 
-    def errors
-      @instance.errors.collect do |k,v|
-        "#{k} #{v}"
-      end.join(', ')
+    def update(attributes)
+      @instance.update_attributes attributes
+      @instance.save
     end
 
-    def update(attributes)
-      @instance.update attributes
-      #self
+    def saved
+      @instance.valid?
+    end
+
+    def errors
+      @instance.errors.full_messages.join(', ')
     end
 
     def method_missing(meth, *args, &block)

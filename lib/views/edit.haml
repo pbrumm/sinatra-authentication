@@ -8,6 +8,8 @@
     - else
       - if @user.email
         = @user.email
+      - elsif @user.fb_uid
+        <fb:name uid=#{@user.fb_uid} linked='false' />
       - else
         account
   %form{:action => "/users/#{@user.id}/edit", :method => "post"}
@@ -35,4 +37,7 @@
             Authenticated user
     .buttons
       %input{ :value => "Update", :type => "submit" }
-
+      - if Sinatra.const_defined?('FacebookObject')
+        - unless @user.fb_uid
+          |
+          = render_facebook_connect_link('Link account with Facebook')
